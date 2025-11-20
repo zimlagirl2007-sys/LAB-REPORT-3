@@ -1,0 +1,57 @@
+#include <LiquidCrystal.h>  
+
+ const float Vin = 4.05; 
+ const float R1=10020; 
+ const float calibration = 1.1; 
+
+const int rs = 12, en = 11, d4= 5, d5= 4, d6= 3, d7=2;  
+
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);  
+
+ byte ohm[8] = { 
+  0b00000, 
+  0b11111, 
+  0b10001, 
+  0b10001, 
+  0b10001, 
+  0b01010, 
+  0b11011, 
+  0b00000 
+ }; 
+
+void setup() {  
+Serial.begin(9600); 
+  lcd.begin(16,2);  
+  lcd.createChar(0,ohm); 
+} 
+void loop() {  
+lcd.clear(); 
+int sensorValue = analogRead(A0); 
+ float Vout = (sensorValue * Vin) / 1023.0;                // Convert ADC value to voltage   
+  float resistance = R1 * (Vout / (Vin - Vout));  
+  float R = resistance * calibration ;          // Calculate unknown resistance   
+
+lcd.setCursor(0,0); 
+lcd.print("R = "); 
+lcd.setCursor(4,0); 
+
+Serial.print("R ="); 
+Serial.println(R); 
+
+if (R <1000){ 
+  lcd.print(R,1); 
+  lcd.write(byte(0)); 
+} 
+else if (R < 1000000){ 
+  lcd.print (R/1000.0,2); 
+  lcd.print ("k"); 
+  lcd.write(byte(0)); 
+} 
+else  { 
+  lcd.print (R/1000000.0,2); 
+  lcd.print ("M"); 
+  lcd.write(byte(0)); 
+} 
+
+delay(1000); 
+}  
