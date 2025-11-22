@@ -10,19 +10,19 @@ Serial.begin(9600);
 
   // set the digital pin as output: 
   pinMode(11, OUTPUT); 
-  pinMode(pushButton, INPUT); 
+  pinMode(pushButton, INPUT); //set the push button as an input
 } 
 
 void loop() { 
-  int buttonState = digitalRead(pushButton);  
+  int buttonState = digitalRead(pushButton);  // read the push button's value
 
-     Serial.print("buttonState = ");  
-  Serial.println(buttonState);  
-  unsigned long currentMillis = millis(); 
+     Serial.print("buttonState = ");  // display "buttonstate =" on the serial monitor
+  Serial.println(buttonState);  // display the buttonstate value on the serial monitor
+  unsigned long currentMillis = millis(); // store the current time in milliseconds
 
   if (currentMillis - previousMillis >= interval) { 
     // save the last time you blinked the LED 
-    previousMillis = currentMillis;
+    previousMillis = currentMillis; 
 
     // if the LED is off turn it on and vice-versa: 
     if (ledState == LOW) { 
