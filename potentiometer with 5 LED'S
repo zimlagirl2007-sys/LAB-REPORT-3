@@ -1,3 +1,5 @@
+//rogram reads the analog value from a potentiometer and lights up a series of LEDs depending on the potentiometer's position. Value read from potentiometer is displayed on serial monitor
+//analog input and digital ouput program
 int sensorPin = A0; // define the pin
 int sensorValue = 0; // define the pin
 
