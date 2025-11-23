@@ -1,3 +1,5 @@
+//program reads the voltage of A0 and calculates the actual voltage to then display on serial monitor
+//analog input program
 void setup() {  
 Serial.begin (9600);  
 }  
