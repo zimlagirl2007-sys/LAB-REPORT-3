@@ -1,3 +1,5 @@
+//read an analog value from a sensor and display its raw and voltage-converted value on the serial monitor
+// analog input
 void setup() { 
 
   // initialize serial communication at 9600 bits per second: 
