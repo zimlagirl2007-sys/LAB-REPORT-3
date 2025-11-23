@@ -1,3 +1,5 @@
+// program reads a push button state and blinks an LED on pin 11  ever 1 second. The state of the pushbutton wil be displayed on the serial monitor
+//digital input and digital output program
 const int ledPin = LED_BUILTIN;  // the number of the LED pin 
 int ledState = LOW;  // ledState used to set the LED 
 
